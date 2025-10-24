@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#6a0dad">
+    <title>Sistem Entri Data Karyawan Futuristik</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.webmanifest">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+    <link rel="apple-touch-icon" sizes="192x192" href="assets/icon-192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="assets/icon-512.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 3D Background Elements -->
+    <div class="background-3d">
+        <div class="floating-sphere"></div>
+        <div class="floating-sphere sphere-2"></div>
+        <div class="floating-sphere sphere-3"></div>
+        <div class="grid-overlay"></div>
+    </div>
+    
+    <!-- Notification Container -->
+    <div id="notification-container"></div>
+    
+    <!-- Main App Container -->
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header glassmorphism">
+            <div class="header-content">
+                <h1 class="app-title">Sistem Entri Data Karyawan</h1>
+                <div class="header-controls">
+                    <button id="theme-toggle" class="icon-button" aria-label="Toggle tema">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                    <button id="stats-toggle" class="icon-button" aria-label="Statistik">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Form Section -->
+            <section class="form-section glassmorphism">
+                <h2 class="section-title">Formulir Karyawan Baru</h2>
+                <form id="employee-form" class="employee-form">
+                    <!-- NIK Field -->
+                    <div class="form-group">
+                        <label for="nik" class="form-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                            Nomor Induk Kependudukan (NIK)
+                        </label>
+                        <input type="text" id="nik" name="nik" class="form-input" maxlength="16" placeholder="Masukkan 16 digit NIK" required>
+                        <div class="error-message" id="nik-error"></div>
+                    </div>
+                    
+                    <!-- Nama Lengkap Field -->
+                    <div class="form-group">
+                        <label for="nama" class="form-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            Nama Lengkap
+                        </label>
+                        <input type="text" id="nama" name="nama" class="form-input" placeholder="Masukkan nama lengkap" required>
+                        <div class="error-message" id="nama-error"></div>
+                    </div>
+                    
+                    <!-- Nomor Telepon Field -->
+                    <div class="form-group">
+                        <label for="telepon" class="form-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            Nomor Telepon
+                        </label>
+                        <input type="tel" id="telepon" name="telepon" class="form-input" placeholder="Masukkan nomor telepon" required>
+                        <div class="error-message" id="telepon-error"></div>
+                    </div>
+                    
+                    <!-- Alamat Field -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Alamat (Koordinat)
+                        </label>
+                        
+                        <div class="coordinate-fields">
+                            <div class="coordinate-group">
+                                <label for="latitude" class="coordinate-label">Latitude</label>
+                                <input type="number" id="latitude" name="latitude" class="form-input coordinate-input" step="any" placeholder="-6.123456" required>
+                            </div>
+                            
+                            <div class="coordinate-group">
+                                <label for="longitude" class="coordinate-label">Longitude</label>
+                                <input type="number" id="longitude" name="longitude" class="form-input coordinate-input" step="any" placeholder="106.123456" required>
+                            </div>
+                        </div>
+                        
+                        <button type="button" id="getLocationBtn" class="btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Ambil Lokasi Otomatis
+                        </button>
+                        
+                        <div class="error-message" id="alamat-error"></div>
+                        
+                        <!-- Globe Visualization -->
+                        <div id="globe-container" class="globe-container hidden">
+                            <div class="globe-visual">
+                                <div class="globe-inner"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Status Keluarga Field -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            Status Keluarga
+                        </label>
+                        
+                        <div class="radio-group" id="status-keluarga-group">
+                            <input type="radio" id="menikah" name="statusKeluarga" value="Menikah" class="radio-input">
+                            <label for="menikah" class="radio-label">
+                                <span class="radio-custom"></span>
+                                Menikah
+                            </label>
+                            
+                            <input type="radio" id="tidak-menikah" name="statusKeluarga" value="Tidak Menikah" class="radio-input">
+                            <label for="tidak-menikah" class="radio-label">
+                                <span class="radio-custom"></span>
+                                Tidak Menikah
+                            </label>
+                        </div>
+                        
+                        <div class="error-message" id="status-error"></div>
+                        
+                        <!-- Heart Animation Container -->
+                        <div id="heart-animation" class="heart-animation hidden">
+                            <div class="heart-particle"></div>
+                            <div class="heart-particle particle-2"></div>
+                            <div class="heart-particle particle-3"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pendidikan Terakhir Field -->
+                    <div class="form-group">
+                        <label for="pendidikan" class="form-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+                            </svg>
+                            Pendidikan Terakhir
+                        </label>
+                        
+                        <select id="pendidikan" name="pendidikan" class="form-select" required>
+                            <option value="" disabled selected>Pilih tingkat pendidikan</option>
+                            <option value="SD">SD</option>
+                            <option value="SMP">SMP</option>
+                            <option value="SMA/SMK">SMA/SMK</option>
+                            <option value="Diploma">Diploma</option>
+                            <option value="S1">S1 (Sarjana)</option>
+                            <option value="S2">S2 (Magister)</option>
+                            <option value="S3">S3 (Doktor)</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                        
+                        <!-- Additional Education Field -->
+                        <div id="education-other-container" class="slide-in-container hidden">
+                            <label for="pendidikan-lainnya" class="form-label">Sebutkan Pendidikan</label>
+                            <input type="text" id="pendidikan-lainnya" name="pendidikanLainnya" class="form-input" placeholder="Masukkan pendidikan lainnya">
+                        </div>
+                        
+                        <div class="error-message" id="pendidikan-error"></div>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                                <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                <polyline points="7 3 7 8 15 8"></polyline>
+                            </svg>
+                            Simpan Data Karyawan
+                        </button>
+                        
+                        <button type="reset" class="btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="1 4 1 10 7 10"></polyline>
+                                <path d="M3.51 15a9 9 0 0 0 2.13 4.29A9.05 9.05 0 0 0 12 22a9.05 9.05 0 0 0 6.36-2.71A9 9 0 0 0 20.49 15"></path>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                            </svg>
+                            Reset Formulir
+                        </button>
+                    </div>
+                </form>
+            </section>
+            
+            <!-- Statistics Section -->
+            <section id="stats-section" class="stats-section glassmorphism hidden">
+                <h2 class="section-title">Statistik Karyawan</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-employees">0</div>
+                        <div class="stat-label">Total Karyawan</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="married-count">0</div>
+                        <div class="stat-label">Menikah</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="single-count">0</div>
+                        <div class="stat-label">Tidak Menikah</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="avg-education">-</div>
+                        <div class="stat-label">Rata-rata Pendidikan</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Employee List Section -->
+            <section class="employee-list-section glassmorphism">
+                <div class="section-header">
+                    <h2 class="section-title">Daftar Karyawan</h2>
+                    <div class="search-container">
+                        <input type="text" id="search-input" class="form-input search-input" placeholder="Cari berdasarkan nama...">
+                        <button id="export-btn" class="btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Ekspor Data
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="employee-list" class="employee-list">
+                    <!-- Employee cards will be dynamically inserted here -->
+                    <div class="empty-state">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <p>Belum ada data karyawan</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Offline Indicator -->
+    <div id="offline-indicator" class="offline-indicator hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="1" y1="1" x2="23" y2="23"></line>
+            <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path>
+            <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path>
+            <path d="M10.71 5.05A16 16 0 0 1 22.58 9"></path>
+            <path d="M1.42 9a15.91 15.91 0 0 1 4.7-3.09"></path>
+            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+            <line x1="12" y1="20" x2="12.01" y2="20"></line>
+        </svg>
+        Mode offline aktif
+    </div>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+    
+    <!-- Main Application Script -->
+    <script src="script.js"></script>
+</body>
+</html>

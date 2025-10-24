@@ -1,0 +1,21 @@
+{
+  "name": "Sistem Entri Data Karyawan Futuristik",
+  "short_name": "Data Karyawan",
+  "description": "Aplikasi modern untuk entri data karyawan dengan validasi kompleks dan tampilan 3D futuristik",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#6a0dad",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
